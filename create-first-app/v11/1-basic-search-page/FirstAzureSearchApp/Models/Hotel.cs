@@ -8,8 +8,7 @@ namespace FirstAzureSearchApp.Models
 {
     public partial class Hotel
     {
-        [System.ComponentModel.DataAnnotations.Key]
-        [SimpleField(IsFilterable = true)]
+        [SimpleField(IsFilterable = true, IsKey = true)]
         public string HotelId { get; set; }
 
         [SearchableField(IsSortable = true)]
