@@ -147,8 +147,8 @@ namespace AzureSearchBackupRestore
                     Size = MaxBatchSize,
                     Skip = Skip
                 };
-                //SearchResults<Document> response = SourceIndexClient.Search<Document>("*", options);
-                SearchResults<Dictionary<string, object>> response = SourceSearchClient.Search<Dictionary<string, object>>("*", options);
+
+                SearchResults<SearchDocument> response = SourceSearchClient.Search<SearchDocument>("*", options);
 
                 foreach (var doc in response.GetResults())
                 {
@@ -157,7 +157,6 @@ namespace AzureSearchBackupRestore
                     json = json.Replace("\"Longitude\":", "");
                     json = json.Replace(",\"IsEmpty\":false,\"Z\":null,\"M\":null,\"CoordinateSystem\":{\"EpsgId\":4326,\"Id\":\"4326\",\"Name\":\"WGS84\"}", "]");
                     json += "\r\n";
-
                 }
 
                 // Output the formatted content to a file
